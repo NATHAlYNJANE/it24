@@ -38,3 +38,19 @@ if (isPrime(number)) {
 } else {
     console.log(number + " is not a Prime Number");
 }
+
+function chooseAction(option) {
+    switch (option) {
+        case 1:
+            checkOddOrEven(8); // Example number
+            break;
+        case 2:
+            let primeNumber = 13;
+            console.log(isPrime(primeNumber) ? primeNumber + " is Prime" : primeNumber + " is not Prime");
+            break;
+        default:
+            console.log("Invalid Option");
+    }
+}
+
+chooseAction(1);
