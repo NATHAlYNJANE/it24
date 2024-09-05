@@ -13,3 +13,13 @@ console.log("Sum: " + sum);
 console.log("Difference: " + difference);
 console.log("Product: " + product);
 console.log("Quotient: " + quotient);
+
+function checkOddOrEven(num) {
+    if (num % 2 === 0) {
+        console.log(num + " is Even");
+    } else {
+        console.log(num + " is Odd");
+    }
+}
+
+checkOddOrEven(7); 
