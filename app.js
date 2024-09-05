@@ -1,8 +1,8 @@
 console.log("App Started: Data Types, Operators, Conditionals, and Loops");
 
 let num1 = 10;     
-let num2 = 5;  
-let message = "Done na Sir"; 
+let num2 = 5;      
+let message = "Hello, World!";  
 
 let sum = num1 + num2;
 let difference = num1 - num2;
@@ -14,6 +14,7 @@ console.log("Difference: " + difference);
 console.log("Product: " + product);
 console.log("Quotient: " + quotient);
 
+
 function checkOddOrEven(num) {
     if (num % 2 === 0) {
         console.log(num + " is Even");
@@ -23,7 +24,6 @@ function checkOddOrEven(num) {
 }
 
 checkOddOrEven(7); 
-
 function isPrime(num) {
     if (num <= 1) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -42,7 +42,7 @@ if (isPrime(number)) {
 function chooseAction(option) {
     switch (option) {
         case 1:
-            checkOddOrEven(8); // Example number
+            checkOddOrEven(8);
             break;
         case 2:
             let primeNumber = 13;
@@ -53,7 +53,7 @@ function chooseAction(option) {
     }
 }
 
-chooseAction(1);
+chooseAction(1);  
 
 function isPalindrome(str) {
     let len = str.length;
