@@ -13,3 +13,42 @@ body {
     background: url('../image/w.jpg') fixed center;
     background-size: cover;
 }
+.profile-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 100%; /* Optional: Add a border-radius for a circular shape */
+}
+
+.main,
+.mainE {
+text-align: center;
+margin: 20px;
+}
+
+.profile-image {
+width: 300px;
+height: 300px;
+border-radius: 50%; /* Optional: Add a border-radius for a circular shape */
+margin-bottom: 10px;
+}
+
+.heading,
+.headingE {
+font-family: 'Arial', sans-serif;
+font-size: 32px;
+color: #b50b0b;
+font-family: century;
+font-size: 3rem;
+text-align: center;
+margin: 40px 0px;
+
+}
+
+.btm {
+background-color: #4CAF50;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
