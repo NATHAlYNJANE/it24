@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('../image/g.gif') fixed center;
+    background-size: cover;
+}
+.profile-image {
+    width: 300px;
+    height: 300px;
+    border-radius: 100%; 
+}
+
+.main,
+.mainE {
+text-align: center;
+margin: 20px;
+}
+
+.profile-image {
+width: 300px;
+height: 300px;
+border-radius: 50%; 
+margin-bottom: 10px;
+}
+
+.heading,
+.headingE {
+font-family: 'Arial', sans-serif;
+font-size: 32px;
+color: #b50b0b;
+font-family: century;
+font-size: 3rem;
+text-align: center;
+margin: 40px 0px;
+
+}
+
+.btm {
+background-color: #4CAF50;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}
+.navbar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color:rgba(0,0, 0, 0.5);
+    position: sticky;
+    top: 0;
+}
+.navbar ul{
+    display: flex;
+    list-style: none;
+    margin: 20px 0px;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.navbar ul li{
+    font-family: century;
+    font-size:  1.1rem;
+    font-weight: bold;
+}
+.navbar ul li a{
+    text-decoration: none;
+    color: white;
+    padding: 8px 25px;
+    transition: all .5s ease;
+}
+.navbar ul li a:hover{
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 10px white;
+}
+
+h1 {
+    color: white;
+}
+.container {
+    background-color: rgb(201, 84, 156);
+    border-radius: 120px;
+    padding: 100px;
+    max-width:900px;
+    margin: auto;
+    box-shadow: 0px 4px 90px rgba(2, 0, 0, 0.1);
+}
+input {
+    width: 90%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+button {
+    background-color: #fa27b4;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #ff00b3;
+}
+.result {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
