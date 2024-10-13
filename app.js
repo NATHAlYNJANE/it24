@@ -51,3 +51,26 @@ function checkPalindrome() {
     }
     displayResult(str + " is a Palindrome");
 }
+
+function zoomIn(container) {
+  
+    const containers = document.querySelectorAll('.container');
+    containers.forEach(c => {
+        c.classList.remove('zoomed');
+    });
+    
+    container.classList.add('zoomed');
+   
+    document.querySelector('.back-button').style.display = 'block';
+}
+
+function resetZoom() {
+  
+    const containers = document.querySelectorAll('.container');
+    containers.forEach(c => {
+        c.classList.remove('zoomed');
+    });
+   
+    document.querySelector('.back-button').style.display = 'none';
+}
+
