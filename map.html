@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>InteractiveMap</title>
-    <link rel="stylesheet" href="css/style.css">s
+    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/map.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
@@ -15,6 +15,7 @@
             <li><a href="index.html">Home</a></li>
             <li><a href="lab3.html">My Lab3</a></li>
             <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="log.html">log</a></li>
         
             
         </ul>
@@ -49,6 +50,22 @@
                 .bindPopup(location.name)
                 .openPopup();
         });
+         function navigateToLocation(index) {
+                const location = locations[index];
+                map.setView([location.lat, location.lng], 12);
+                L.marker([location.lat, location.lng]).addTo(map).bindPopup(location.name).openPopup();
+            }
+              function searchLocation() {
+                const input = document.getElementById("locationInput").value.toLowerCase();
+                const location = locations.find(loc => loc.name.toLowerCase() === input);
+                
+                if (location) {
+                    map.setView([location.lat, location.lng], 12);
+                    L.marker([location.lat, location.lng]).addTo(map).bindPopup(location.name).openPopup();
+                } else {
+                    alert("Location not found. Please try again.");
+                }
+            }
     </script>
 
     <script src="app.js"></script>
