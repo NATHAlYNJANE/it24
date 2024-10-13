@@ -1,0 +1,87 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    padding: 20px;
+    background-color: #ffe6f2;
+    color: #333;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+h1 {
+    text-align: center;
+    color: #cc0066;
+    margin-bottom: 20px;
+}
+button {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: #ff99cc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #e68ab3;
+}
+.reset-button {
+    background-color: #ff4d4d;
+}
+.reset-button:hover {
+    background-color: #e63b3b;
+}
+.logs-container {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+.log-item {
+    background-color: #ffe6f2;
+    margin: 5px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-size: 0.9em;
+    color: #cc0066;
+    transition: transform 0.3s ease;
+}
+.log-item:hover {
+    transform: translateY(-4px);
+}
+.total-logs {
+    font-weight: bold;
+    margin-top: 20px;
+    text-align: center;
+    color: #cc0066;
+}
+.navbar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+.navbar ul li {
+    display: inline;
+    margin-right: 20px;
+}
+.navbar ul li a {
+    text-decoration: none;
+    color: #ff99cc;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+.navbar ul li a:hover {
+    color: #e68ab3;
+}
