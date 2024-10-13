@@ -93,3 +93,16 @@ function filterGallery() {
 function showDetails(imageTitle, description) {
     alert(`${imageTitle}\n\n${description}`);
 }
+const map = L.map('map').setView([14.5995, 120.9842], 12);
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+locations.forEach(location => {
+    L.marker([location.lat, location.lng])
+        .addTo(map)
+        .bindPopup(location.name)
+        .openPopup();
+});
