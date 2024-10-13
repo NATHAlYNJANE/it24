@@ -74,3 +74,22 @@ function resetZoom() {
     document.querySelector('.back-button').style.display = 'none';
 }
 
+function filterGallery() {
+    const input = document.getElementById('search-input');
+    const filter = input.value.toLowerCase();
+    const gallery = document.getElementById('gallery');
+    const containers = gallery.getElementsByClassName('container');
+
+    for (let i = 0; i < containers.length; i++) {
+        const title = containers[i].querySelector('h2').textContent;
+        if (title.toLowerCase().includes(filter)) {
+            containers[i].style.display = "";
+        } else {
+            containers[i].style.display = "none";
+        }
+    }
+}
+
+function showDetails(imageTitle, description) {
+    alert(`${imageTitle}\n\n${description}`);
+}
