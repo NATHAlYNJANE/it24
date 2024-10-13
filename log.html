@@ -19,8 +19,8 @@
 
     <div class="container">
         <h1>Log Applet</h1>
-        
-        <button class="reset-button"></button>
+        <button onclick="addLog()">Add Log</button>
+        <button class="reset-button" onclick="resetLogs()">Reset Logs</button>
         
         <div class="logs-container" id="logs-container">
           
@@ -30,5 +30,18 @@
             Total Logs: 0
         </div>
     </div>
+    <script>
+        let logs = JSON.parse(localStorage.getItem('logs')) || [];
+
+        function addLog() {
+            const now = new Date();
+            const logMessage = `Log entry at ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+            logs.push(logMessage);
+
+            localStorage.setItem('logs', JSON.stringify(logs));
+
+            displayLogs();
+            updateLogCount();
+        }
 </body>
 </html>
