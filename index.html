@@ -3,28 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LO5</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Log Applet - Add Log</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+            background-color: #ffe6f2;
+            color: #333;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            color: #cc0066;
+            margin-bottom: 20px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background-color: #ff99cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #e68ab3;
+        }
+    </style>
 </head>
 <body>
-    <nav class="navbar">
-        <ul>
-            
-            <li><a href="map.html">InteractiveMap</a></li>
-            <li><a href="lab3.html">My Lab3</a></li>
-            <li><a href="gallery.html">Gallery</a></li> 
-            <li><a href="log.html">log</a></li>
-           
-            
-        
-            
-        </ul>
-    </nav>
-    <div class="main">
-        <img src="./image/p.jpg" alt="nathalyn Image" class="profile-image">
-        <h1 class="headings">I'm<br> nathalyn</h1>
-       
+
+    <div class="container">
+        <h1>Add Log</h1>
+        <button onclick="addLog()">Add Log & Go to Logs</button>
     </div>
-   
+
+    <script>
+        function addLog() {
+            const now = new Date();
+            const logMessage = `Log entry at ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+            
+            let logs = JSON.parse(localStorage.getItem('logs')) || [];
+            logs.push(logMessage);
+            localStorage.setItem('logs', JSON.stringify(logs));
+
+            window.location.href = 'home.html';
+        }
+    </script>
+
 </body>
 </html>
