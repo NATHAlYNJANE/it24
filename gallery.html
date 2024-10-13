@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>gallery</title>
+    <title>Gallery</title>
     <link rel="stylesheet" href="css/gallery.css">
 </head>
 <body>
@@ -14,60 +14,65 @@
             <li><a href="gallery.html">Gallery</a></li>
         </ul>
     </nav>
-    <br>
-    <br>
-    <h1 style="text-align: center; font-size: 120px;">Gallery</h1>
-    <br>
-    <br>
-  <hr>
-  <br>
-    <div class="gallery-container">
-        <div class="container">
-            <img src="./image/1.jfif" alt="Image 1">
-            <h1>"A Day in the Life of a College Student"</h1>
-            <br>
-            <p>As an IT student, my day is filled with coding lectures, group projects, and debugging assignments between classes. By evening, I work on programming tasks, preparing for the next day’s challenges.</p>
-        </div>
-
-        
-            <div class="container">
-                <img src="./image/2.jfif" alt="Image 2">
-                <h1>"A Typical Day on Campus"</h1>
-                <br>
-                <p>A typical day on campus starts with attending morning lectures, grabbing a quick meal between classes, and working on assignments in the library or computer lab. After classes, I hang out with friends or join study groups, preparing for quizzes or projects before heading home to finish the day’s work.</p>
-            </div>
-
-           
-                <div class="container">
-                    <img src="./image/3.jfif" alt="Image 3">
-                    <h1>"Park Adventures: Friends, Fresh Air, and Fun"</h1>
-                    <br>
-                    <p>On a sunny afternoon, my friends and I set off for the park, laughing and sharing stories as we walked along the winding paths. We played frisbee, enjoyed the fresh air, and cherished the moments of friendship that made the day unforgettable.</p>
-                </div>
-
-                <div class="container">
-                    <img src="./image/4.jfif" alt="Image 5">
-                    <h1>"Embracing Freedom: A Journey to Inner Peace"</h1>
-                    <br>
-                    <p>As my friends and I set off on a spontaneous road trip, the open road ahead symbolized our shared freedom and the joy of adventure. With laughter echoing through the car and the wind in our hair, we embraced every moment, knowing these carefree days would lead us to inner peace and unforgettable memories.</p>
-                </div>
-
-                <div class="container">
-                    <img src="./image/5.jfif" alt="Image 5">
-                    <h1>"Family Bonds: Cherishing Time Together"</h1>
-                    <br>
-                    <p>At a beautiful resort by the sea, my family and I spent the day swimming, laughing, and relaxing under the sun. As we enjoyed the fresh breeze and the stunning view, the time together felt even more special, creating memories we’ll cherish forever.</p>
-                </div>
-
-                <div class="container">
-                    <img src="./image/6.jfif" alt="Image 5">
-                    <h1>"College Life: One Day at a Time"</h1>
-                    <br>
-                    <p>Each day in college brings new challenges and discoveries, from late-night study sessions to spontaneous hangouts with friends. As I navigate the ups and downs, I learn to take life one day at a time, cherishing the experiences that shape my journey.</p>
-                </div>
-     
-     
-    </div>
+    <h1 class="gallery-title">Gallery</h1>
     
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search..." oninput="filterGallery()">
+    </div>
+
+    <div class="gallery-container" id="gallery">
+        <div class="container" onclick="showDetails('Image 1', 'A Day in the Life of a College Student')">
+            <img src="./image/1.jfif" alt="Image 1">
+            <h2>"A Day in the Life of a College Student"</h2>
+            <p>As an IT student, my day is filled with coding lectures, group projects, and debugging assignments.</p>
+        </div>
+        <div class="container" onclick="showDetails('Image 2', 'A Typical Day on Campus')">
+            <img src="./image/2.jfif" alt="Image 2">
+            <h2>"A Typical Day on Campus"</h2>
+            <p>A typical day on campus starts with morning lectures, quick meals, and working on assignments.</p>
+        </div>
+        <div class="container" onclick="showDetails('Image 3', 'Park Adventures: Friends, Fresh Air, and Fun')">
+            <img src="./image/3.jfif" alt="Image 3">
+            <h2>"Park Adventures: Friends, Fresh Air, and Fun"</h2>
+            <p>On a sunny afternoon, my friends and I set off for the park, sharing stories and enjoying frisbee.</p>
+        </div>
+        <div class="container" onclick="showDetails('Image 4', 'Embracing Freedom: A Journey to Inner Peace')">
+            <img src="./image/4.jfif" alt="Image 4">
+            <h2>"Embracing Freedom: A Journey to Inner Peace"</h2>
+            <p>A spontaneous road trip led us to embrace freedom and create unforgettable memories.</p>
+        </div>
+        <div class="container" onclick="showDetails('Image 5', 'Family Bonds: Cherishing Time Together')">
+            <img src="./image/5.jfif" alt="Image 5">
+            <h2>"Family Bonds: Cherishing Time Together"</h2>
+            <p>At a beautiful resort, my family and I enjoyed swimming and relaxing under the sun.</p>
+        </div>
+        <div class="container" onclick="showDetails('Image 6', 'College Life: One Day at a Time')">
+            <img src="./image/6.jfif" alt="Image 6">
+            <h2>"College Life: One Day at a Time"</h2>
+            <p>Each day in college brings new challenges, from late-night study sessions to spontaneous hangouts.</p>
+        </div>
+    </div>
+
+    <script>
+        function filterGallery() {
+            const input = document.getElementById('search-input');
+            const filter = input.value.toLowerCase();
+            const gallery = document.getElementById('gallery');
+            const containers = gallery.getElementsByClassName('container');
+
+            for (let i = 0; i < containers.length; i++) {
+                const title = containers[i].querySelector('h2').textContent;
+                if (title.toLowerCase().includes(filter)) {
+                    containers[i].style.display = "";
+                } else {
+                    containers[i].style.display = "none";
+                }
+            }
+        }
+
+        function showDetails(imageTitle, description) {
+            alert(`${imageTitle}\n\n${description}`);
+        }
+    </script>
 </body>
 </html>
