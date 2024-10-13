@@ -43,5 +43,12 @@
             displayLogs();
             updateLogCount();
         }
+
+        function resetLogs() {
+            logs = []; // Clear the logs array
+            localStorage.removeItem('logs'); // Remove logs from localStorage
+            displayLogs();
+            updateLogCount();
+        }
 </body>
 </html>
