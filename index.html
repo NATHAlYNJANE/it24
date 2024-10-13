@@ -3,105 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Multimedia Webpage</title>
+    <title>Log Applet - Add Log</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #333;
-            overflow: hidden;
-        }
-        nav a {
-            float: left;
-            display: block;
-            color: white;
-            text-align: center;
-            padding: 14px 16px;
-            text-decoration: none;
-        }
-        nav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-        section {
+            font-family: 'Poppins', sans-serif;
             padding: 20px;
-            margin: 10px;
-            background-color: white;
-            border-radius: 5px;
+            background-color: #ffe6f2;
+            color: #333;
         }
-        footer {
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
             text-align: center;
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            position: relative;
-            bottom: 0;
+        }
+        h1 {
+            color: #cc0066;
+            margin-bottom: 20px;
+        }
+        button {
             width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            background-color: #ff99cc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
-        .video-container {
-            text-align: center;
-            margin: 20px 0;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
+        button:hover {
+            background-color: #e68ab3;
         }
     </style>
 </head>
 <body>
 
-<header>
-    <h1>Welcome to My Multimedia Webpage</h1>
-</header>
-
-<nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<section id="home">
-    <h2>Home</h2>
-    <p>This is a simple webpage demonstrating HTML and CSS with multimedia elements.</p>
-</section>
-
-<section id="about">
-    <h2>About</h2>
-    <p>This section contains information about the website.</p>
-</section>
-
-<section id="gallery">
-    <h2>Gallery</h2>
-    <div class="video-container">
-        <h3>Watch This Amazing Video</h3>
-        <video width="320" height="240" controls>
-            <source src="your-video-file.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
+    <div class="container">
+        <h1>Add Log</h1>
+        <button onclick="addLog()">Add Log & Go to Logs</button>
     </div>
-    <h3>Image Gallery</h3>
-    <img src="your-image-file.jpg" alt="An example image">
-</section>
 
-<section id="contact">
-    <h2>Contact</h2>
-    <p>If you have any questions, feel free to reach out!</p>
-</section>
+    <script>
+        function addLog() {
+            const now = new Date();
+            const logMessage = `Log entry at ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+            
+            let logs = JSON.parse(localStorage.getItem('logs')) || [];
+            logs.push(logMessage);
+            localStorage.setItem('logs', JSON.stringify(logs));
 
-<footer>
-    <p>&copy; 2024 My Multimedia Webpage</p>
-</footer>
+            window.location.href = 'home.html';
+        }
+    </script>
 
 </body>
 </html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Log Applet - Log Details</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            padding: 20px;
+            background-color: #ffe6f2;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #cc0066;
+            margin-bottom: 20px;
+        }
+        .logs-container {
+            margin-top: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+        .log-item {
+            background-color: #ffe6f2;
+            margin: 5px 0;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 0.9em;
+            color: #cc0066;
+            transition: transform 0.3s ease;
+        }
+        .log-item:hover {
+            transform: translateY(-4px);
+        }
+        .total-logs {
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: center;
+            color: #cc0066;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            
+            <li><a href="home.html">Home</a></li>
+            <li><a href="lab3.html">My Lab3</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="map.html">Map</a></li>
+           
+        
+            
+        </ul>
+    </nav>
+
+    <div class="container">
+        <h1>Log Details</h1>
+        
+        <div class="logs-container" id="logs-container">
+           
+        </div>
+        
+        <div class="total-logs" id="total-logs">
+            Total Logs: 0
+        </div>
+    </div>
+
+    <script>
+        function displayLogs() {
+            const logsContainer = document.getElementById('logs-container');
+            const totalLogsElement = document.getElementById('total-logs');
+
+            let logs = JSON.parse(localStorage.getItem('logs')) || [];
+
+            logsContainer.innerHTML = ''; 
+
+            logs.forEach(log => {
+                const logElement = document.createElement('div');
+                logElement.classList.add('log-item');
+                logElement.innerText = log;
+                logsContainer.appendChild(logElement);
+            });
+
+            totalLogsElement.innerText = `Total Logs: ${logs.length}`;
+        }
+
+        window.onload = function() {
+            displayLogs();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="css/gallery.css">
+</head>
+<body>
+    <nav class="navbar">
+        <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="lab3.html">My Lab3</a></li>
+            <li><a href="map.html">InteractiveMap</a></li>
+            <li><a href="logdetails.html">logdetails</a></li>
+        </ul>
+    </nav>
+    <h1 class="gallery-title">Gallery</h1>
+    
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Search..." oninput="filterGallery()">
+    </div>
+
+    <div class="gallery-container" id="gallery">
+        <div class="container" onclick="showDetails('Image 1', 'A Day in the Life of a College Student')">
+            <img src="./image/1.jfif" alt="Image 1">
+            <h2>"A Day in the Life of a College Student"</h2>
+            <p>As an IT student, my day is filled with coding lectures, group projects, and debugging assignments.</p>
+        </div>
+        <div class="container" onclick="showDetails('Image 2', 'A Typical Day on Campus')">
+            <img src="./image/2.jfif" alt="Image 2">
+            <h2>"A Typical Day on Campus"</h2>
+            <p>A typical day on campus starts with morning lectures, quick meals, and working on assignments.</p>
+        </div>
+        <div class="container" onclick="showDetails('Image 3', 'Park Adventures: Friends, Fresh Air, and Fun')">
+            <img src="./image/3.jfif" alt="Image 3">
+            <h2>"Park Adventures: Friends, Fresh Air, and Fun"</h2>
+            <p>On a sunny afternoon, my friends and I set off for the park, sharing stories and enjoying frisbee.</p>
+        </div>
+        <div class="container" onclick="showDetails('Image 4', 'Embracing Freedom: A Journey to Inner Peace')">
+            <img src="./image/4.jfif" alt="Image 4">
+            <h2>"Embracing Freedom: A Journey to Inner Peace"</h2>
+            <p>A spontaneous road trip led us to embrace freedom and create unforgettable memories.</p>
+        </div>
+        <div class="container" onclick="showDetails('Image 5', 'Family Bonds: Cherishing Time Together')">
+            <img src="./image/5.jfif" alt="Image 5">
+            <h2>"Family Bonds: Cherishing Time Together"</h2>
+            <p>At a beautiful resort, my family and I enjoyed swimming and relaxing under the sun.</p>
+        </div>
+        <div class="container" onclick="showDetails('Image 6', 'College Life: One Day at a Time')">
+            <img src="./image/6.jfif" alt="Image 6">
+            <h2>"College Life: One Day at a Time"</h2>
+            <p>Each day in college brings new challenges, from late-night study sessions to spontaneous hangouts.</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
