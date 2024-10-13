@@ -1,21 +1,27 @@
 body {
     font-family: 'Poppins', sans-serif;
     padding: 20px;
-    background-color: #ffe6f2;
+    background: linear-gradient(135deg, #ffccff, #ffe6f2);
     color: #333;
 }
 .container {
     max-width: 600px;
     margin: 0 auto;
-    background: #fff;
+    background: white;
     padding: 30px;
     border-radius: 12px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
 }
 h1 {
     text-align: center;
     color: #cc0066;
     margin-bottom: 20px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 button {
     width: 100%;
@@ -27,10 +33,11 @@ button {
     border-radius: 8px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 button:hover {
     background-color: #e68ab3;
+    transform: translateY(-2px);
 }
 .reset-button {
     background-color: #ff4d4d;
@@ -56,13 +63,15 @@ button:hover {
     transition: transform 0.3s ease;
 }
 .log-item:hover {
-    transform: translateY(-4px);
+    transform: scale(1.02);
+    background-color: #ffccf2;
 }
 .total-logs {
     font-weight: bold;
     margin-top: 20px;
     text-align: center;
     color: #cc0066;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 .navbar {
     text-align: center;
@@ -81,7 +90,10 @@ button:hover {
     color: #ff99cc;
     font-weight: bold;
     transition: color 0.3s ease;
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 .navbar ul li a:hover {
     color: #e68ab3;
+    background-color: rgba(255, 255, 255, 0.2);
 }
