@@ -50,5 +50,15 @@
             displayLogs();
             updateLogCount();
         }
+        function updateLogCount() {
+            const totalLogsElement = document.getElementById('total-logs');
+            totalLogsElement.innerText = `Total Logs: ${logs.length}`;
+        }
+
+        window.onload = function() {
+            displayLogs();
+            updateLogCount();
+        }
+    </script>
 </body>
 </html>
