@@ -37,6 +37,23 @@
             <li class="list-item">Watermelon</li>
         </ul>
     </div>
+    <script>
+        const searchBar = document.getElementById("searchBar");
+        const searchList = document.getElementById("searchList");
 
+        searchBar.addEventListener("input", function () {
+            const filter = searchBar.value.toLowerCase();
+            const items = searchList.querySelectorAll(".list-item");
+
+            items.forEach((item) => {
+                const text = item.textContent.toLowerCase();
+                if (text.includes(filter)) {
+                    item.classList.remove("hidden");
+                } else {
+                    item.classList.add("hidden");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
