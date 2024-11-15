@@ -3,85 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do List</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>To-Do List with Edit</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            width: 100%;
+            background-color: #333;
+            overflow: hidden;
             display: flex;
             justify-content: center;
-            align-items: center;
-            height: 100vh;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        .todo-container {
-            background-color: #fff;
+        .navbar ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        /* To-Do List Container */
+        .applet-container {
+            margin-top: 20px;
             padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
             border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 400px;
-            max-width: 100%;
         }
 
-        h1 {
-            margin: 0 0 20px;
-            font-size: 24px;
+        h2 {
             text-align: center;
+            margin-bottom: 20px;
             color: #333;
         }
 
-        .todo-form {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
         .todo-input {
-            flex: 1;
+            width: 100%;
             padding: 10px;
-            font-size: 16px;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
-            border-radius: 4px;
-            margin-right: 10px;
+            border-radius: 5px;
+            font-size: 16px;
         }
 
         .add-btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            color: #fff;
+            width: 100%;
+            padding: 10px;
             background-color: #28a745;
+            color: white;
             border: none;
-            border-radius: 4px;
+            border-radius: 5px;
+            font-size: 16px;
             cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
         .add-btn:hover {
             background-color: #218838;
         }
 
-        .todo-list {
+        .list-container {
             list-style: none;
             padding: 0;
             margin: 0;
         }
 
-        .todo-item {
+        .list-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s ease;
         }
 
-        .todo-item:last-child {
+        .list-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .list-item:last-child {
             border-bottom: none;
         }
 
-        .todo-text {
-            flex: 1;
-            font-size: 16px;
+        .list-item.hidden {
+            display: none;
         }
 
         .complete {
@@ -89,76 +127,111 @@
             color: #6c757d;
         }
 
+        .edit-btn,
+        .delete-btn {
+            padding: 5px 10px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-btn {
+            background-color: #007bff;
+        }
+
+        .edit-btn:hover {
+            background-color: #0056b3;
+        }
+
         .delete-btn {
             background-color: #dc3545;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
-            padding: 5px 10px;
-            cursor: pointer;
         }
 
         .delete-btn:hover {
             background-color: #c82333;
         }
     </style>
+</head>
 <body>
-    <nav class="navbar">
+    <header class="navbar">
         <ul>
-            <li><a href="gallery.html">gallery</a></li>
-            <li><a href="applet4.html">applet4</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="applet4.html">Applet 4</a></li>
             <li><a href="home.html">Home</a></li>
-            <li><a href="lab3.html">My Lab3</a></li>
-            <li><a href="map.html">InteractiveMap</a></li>
-            <li><a href="logdetails.html">logdetails</a></li>
+            <li><a href="lab3.html">My Lab 3</a></li>
+            <li><a href="map.html">Interactive Map</a></li>
+            <li><a href="logdetails.html">Log Details</a></li>
             <li><a href="todolist.html">todo list</a></li>
         </ul>
-    </nav>
-    <div class="todo-container">
-        <h1>To-Do List</h1>
-        <form class="todo-form" id="todoForm">
+    </header>
+    <div class="applet-container">
+        <h2>To-Do List</h2>
+        <form id="todoForm">
             <input
                 type="text"
                 id="todoInput"
                 class="todo-input"
-                placeholder="Enter a new task"
+                placeholder="Enter a new task..."
             />
-            <button type="submit" class="add-btn">Add</button>
+            <button type="submit" class="add-btn">Add Task</button>
         </form>
-        <ul class="todo-list" id="todoList"></ul>
+        <ul class="list-container" id="todoList"></ul>
     </div>
+
     <script>
         const todoForm = document.getElementById('todoForm');
         const todoInput = document.getElementById('todoInput');
         const todoList = document.getElementById('todoList');
 
         todoForm.addEventListener('submit', function (e) {
-            e.preventDefault(); 
+            e.preventDefault();
+
             const taskText = todoInput.value.trim();
             if (taskText === '') {
                 alert('Please enter a task!');
                 return;
             }
 
+            createTask(taskText);
+            todoInput.value = '';
+        });
+
+        function createTask(taskText) {
             const li = document.createElement('li');
-            li.className = 'todo-item';
+            li.className = 'list-item';
 
-            li.innerHTML = `
-                <span class="todo-text">${taskText}</span>
-                <button class="delete-btn">Delete</button>
-            `;
+            const span = document.createElement('span');
+            span.className = 'todo-text';
+            span.textContent = taskText;
 
-            li.querySelector('.todo-text').addEventListener('click', function () {
-                this.classList.toggle('complete');
+            const editBtn = document.createElement('button');
+            editBtn.className = 'edit-btn';
+            editBtn.textContent = 'Edit';
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.textContent = 'Delete';
+
+            editBtn.addEventListener('click', function () {
+                const newTaskText = prompt('Edit your task:', span.textContent);
+                if (newTaskText !== null && newTaskText.trim() !== '') {
+                    span.textContent = newTaskText.trim();
+                }
             });
 
-            li.querySelector('.delete-btn').addEventListener('click', function () {
+            deleteBtn.addEventListener('click', function () {
                 todoList.removeChild(li);
             });
 
+            li.appendChild(span);
+            li.appendChild(editBtn);
+            li.appendChild(deleteBtn);
+
             todoList.appendChild(li);
-            todoInput.value = ''; 
-        });
+        }
     </script>
 </body>
 </html>
