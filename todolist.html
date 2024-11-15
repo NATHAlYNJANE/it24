@@ -19,5 +19,38 @@
         </form>
         <ul class="todo-list" id="todoList"></ul>
     </div>
+    <script>
+        const todoForm = document.getElementById('todoForm');
+        const todoInput = document.getElementById('todoInput');
+        const todoList = document.getElementById('todoList');
+
+        todoForm.addEventListener('submit', function (e) {
+            e.preventDefault(); 
+            const taskText = todoInput.value.trim();
+            if (taskText === '') {
+                alert('Please enter a task!');
+                return;
+            }
+
+            const li = document.createElement('li');
+            li.className = 'todo-item';
+
+            li.innerHTML = `
+                <span class="todo-text">${taskText}</span>
+                <button class="delete-btn">Delete</button>
+            `;
+
+            li.querySelector('.todo-text').addEventListener('click', function () {
+                this.classList.toggle('complete');
+            });
+
+            li.querySelector('.delete-btn').addEventListener('click', function () {
+                todoList.removeChild(li);
+            });
+
+            todoList.appendChild(li);
+            todoInput.value = ''; 
+        });
+    </script>
 </body>
 </html>
