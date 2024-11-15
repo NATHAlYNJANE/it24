@@ -26,7 +26,7 @@
     <div class="gallery-container" id="gallery"></div>
 
     <script>
-        // Data Array for the Gallery Items
+      
         const galleryData = [
             {
                 title: "A Day in the Life of a College Student",
@@ -60,10 +60,10 @@
             }
         ];
 
-        // Function to Render Gallery Dynamically
+      
         function renderGallery() {
             const galleryContainer = document.getElementById('gallery');
-            galleryContainer.innerHTML = ''; // Clear existing content
+            galleryContainer.innerHTML = ''; 
 
             galleryData.forEach((item, index) => {
                 const card = document.createElement('div');
@@ -79,7 +79,7 @@
             });
         }
 
-        // Filter Function for the Search Bar
+       
         function filterGallery() {
             const filter = document.getElementById('search-input').value.toLowerCase();
             const containers = document.querySelectorAll('.container');
@@ -96,7 +96,7 @@
             });
         }
 
-        // Initial Render
+      
         renderGallery();
     </script>
 </body>
