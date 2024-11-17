@@ -20,14 +20,52 @@
     <li><a href="weather.html">weather</a></li>
     </ul>
     </header>
+
     <div class="container">
       <h2><i class="fas fa-sun"></i> Weather Search</h2>
       <input type="text" id="city" placeholder="Enter city name">
       <button onclick="getWeather()">Search</button>
-      
       <div class="weather-info" id="weather-info">
-     
       </div>
       </div>
+      <script>
+        
+function getWeather() {
+const city = document.getElementById('city').value;
+const apiKey = '236fd43e17ab0429e37c0ad1ac9de569'; // Replace with your own API key
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+fetch(url)
+.then(response => response.json())
+.then(data => {
+if (data.cod === "404") {
+document.getElementById('weather-info').innerHTML = `<p>City not found!</p>`;
+} else {
+const weather = data.weather[0].description;
+const temp = data.main.temp;
+const humidity = data.main.humidity;
+const wind = data.wind.speed;
+const icon = `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`;
+
+document.getElementById('weather-info').innerHTML = `
+<h3>Weather in ${city}</h3>
+<div class="weather-icon">
+<i class="fas fa-cloud-sun"></i>
+</div>
+<img src="${icon}" alt="Weather icon">
+<p><strong>Temperature:</strong> ${temp}°C</p>
+<p><strong>Weather:</strong> ${weather}</p>
+<p><strong>Humidity:</strong> ${humidity}%</p>
+<p><strong>Wind Speed:</strong> ${wind} m/s</p>
+`;
+}
+})
+.catch(error => {
+console.log(error);
+document.getElementById('weather-info').innerHTML = `<p>Could not fetch weather data. Please try again later.</p>`;
+});
+}
+</script>
+
 </body>
 </html>
