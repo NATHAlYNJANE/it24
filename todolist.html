@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>To-Do List with Edit</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            width: 100%;
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        /* To-Do List Container */
+        .applet-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .todo-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .add-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-btn:hover {
+            background-color: #218838;
+        }
+
+        .list-container {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .list-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .list-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-item.hidden {
+            display: none;
+        }
+
+        .complete {
+            text-decoration: line-through;
+            color: #6c757d;
+        }
+
+        .edit-btn,
+        .delete-btn {
+            padding: 5px 10px;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .edit-btn {
+            background-color: #007bff;
+        }
+
+        .edit-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="applet4.html">Applet 4</a></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="lab3.html">My Lab 3</a></li>
+            <li><a href="map.html">Interactive Map</a></li>
+            <li><a href="logdetails.html">Log Details</a></li>
+            <li><a href="todolist.html">todo list</a></li>
+            <li><a href="weather.html">weather</a></li>
+        </ul>
+    </header>
+
+    <div class="applet-container">
+        <h2>To-Do List</h2>
+        <form id="todoForm">
+            <input
+                type="text"
+                id="todoInput"
+                class="todo-input"
+                placeholder="Enter a new task..."
+            />
+            <button type="submit" class="add-btn">Add Task</button>
+        </form>
+        <ul class="list-container" id="todoList"></ul>
+    </div>
+
+    <script>
+        const todoForm = document.getElementById('todoForm');
+        const todoInput = document.getElementById('todoInput');
+        const todoList = document.getElementById('todoList');
+
+        todoForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const taskText = todoInput.value.trim();
+            if (taskText === '') {
+                alert('Please enter a task!');
+                return;
+            }
+
+            createTask(taskText);
+            todoInput.value = '';
+        });
+
+        function createTask(taskText) {
+            const li = document.createElement('li');
+            li.className = 'list-item';
+
+            const span = document.createElement('span');
+            span.className = 'todo-text';
+            span.textContent = taskText;
+
+            const editBtn = document.createElement('button');
+            editBtn.className = 'edit-btn';
+            editBtn.textContent = 'Edit';
+
+            const deleteBtn = document.createElement('button');
+            deleteBtn.className = 'delete-btn';
+            deleteBtn.textContent = 'Delete';
+
+            editBtn.addEventListener('click', function () {
+                const newTaskText = prompt('Edit your task:', span.textContent);
+                if (newTaskText !== null && newTaskText.trim() !== '') {
+                    span.textContent = newTaskText.trim();
+                }
+            });
+
+            deleteBtn.addEventListener('click', function () {
+                todoList.removeChild(li);
+            });
+
+            li.appendChild(span);
+            li.appendChild(editBtn);
+            li.appendChild(deleteBtn);
+
+            todoList.appendChild(li);
+        }
+    </script>
+</body>
+</html>

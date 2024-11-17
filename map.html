@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InteractiveMap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+</head>
+<body>
+    <header class="navbar">
+        <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="applet4.html">Applet 4</a></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="lab3.html">My Lab 3</a></li>
+            <li><a href="map.html">Interactive Map</a></li>
+            <li><a href="logdetails.html">Log Details</a></li>
+            <li><a href="todolist.html">todo list</a></li>
+            <li><a href="weather.html">weather</a></li>
+        </ul>
+    </header>
+
+    <div class="container">
+        
+        <h1 class="map-title">Interactive Map</h1>
+        <div id="map"></div>
+        
+        <script>
+           const locations = [
+                { "location1": "Manolo Fortich, Bukidnon", "lat": 8.3729, "lng": 124.8648 },
+                { "location2": "Camp Phillips, Bukidnon", "lat": 8.3506, "lng": 124.8641 },
+                { "location3": "Cagayan de Oro", "lat": 8.4542, "lng": 124.6319 },
+                { "location4": "Northern Bukidnon State College", "lat": 8.2981, "lng": 125.0812 }
+            ];
+        </script>
+    </div>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+       
+        const map = L.map('map').setView([14.5995, 120.9842], 12);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        locations.forEach(location => {
+            L.marker([location.lat, location.lng])
+                .addTo(map)
+                .bindPopup(location.name)
+                .openPopup();
+        });
+         function navigateToLocation(index) {
+                const location = locations[index];
+                map.setView([location.lat, location.lng], 12);
+                L.marker([location.lat, location.lng]).addTo(map).bindPopup(location.name).openPopup();
+            }
+              function searchLocation() {
+                const input = document.getElementById("locationInput").value.toLowerCase();
+                const location = locations.find(loc => loc.name.toLowerCase() === input);
+                
+                if (location) {
+                    map.setView([location.lat, location.lng], 12);
+                    L.marker([location.lat, location.lng]).addTo(map).bindPopup(location.name).openPopup();
+                } else {
+                    alert("Location not found. Please try again.");
+                }
+            }
+    </script>
+
+    <script src="app.js"></script>
+</body>
+</html>

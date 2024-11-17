@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>applet-4</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            width: 100%;
+            background-color: #333;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+        }
+
+        .navbar li {
+            margin: 0 15px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #555;
+        }
+
+        /* Applet Container */
+        .applet-container {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .list-container {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .list-item {
+            padding: 10px 15px;
+            border-bottom: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+        }
+
+        .list-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        .list-item:last-child {
+            border-bottom: none;
+        }
+
+        .list-item.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar">
+        <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="applet4.html">Applet 4</a></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="lab3.html">My Lab 3</a></li>
+            <li><a href="map.html">Interactive Map</a></li>
+            <li><a href="logdetails.html">Log Details</a></li>
+            <li><a href="todolist.html">todo list</a></li>
+            <li><a href="weather.html">weather</a></li>
+        </ul>
+    </header>
+
+    <div class="applet-container">
+        <h2>Applet 4</h2>
+        <input
+            type="text"
+            class="search-bar"
+            id="searchBar"
+            placeholder="Search items..."
+            aria-label="Search items"
+        />
+        <ul class="list-container" id="searchList">
+            <li class="list-item">Apple</li>
+            <li class="list-item">Banana</li>
+            <li class="list-item">Cherry</li>
+            <li class="list-item">Dragonfruit</li>
+            <li class="list-item">Grapes</li>
+            <li class="list-item">Mango</li>
+            <li class="list-item">Orange</li>
+            <li class="list-item">Papaya</li>
+            <li class="list-item">Peach</li>
+            <li class="list-item">Watermelon</li>
+        </ul>
+    </div>
+
+    <script>
+        const searchBar = document.getElementById("searchBar");
+        const searchList = document.getElementById("searchList");
+
+        searchBar.addEventListener("input", () => {
+            const filter = searchBar.value.toLowerCase();
+            const items = searchList.querySelectorAll(".list-item");
+
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                item.classList.toggle("hidden", !text.includes(filter));
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>lab3</title>
+</head>
+<body>
+    <header class="navbar">
+        <ul>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="applet4.html">Applet 4</a></li>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="lab3.html">My Lab 3</a></li>
+            <li><a href="map.html">Interactive Map</a></li>
+            <li><a href="logdetails.html">Log Details</a></li>
+            <li><a href="todolist.html">todo list</a></li>
+            <li><a href="weather.html">weather</a></li>
+        </ul>
+    </header>
+
+    
+    <div class="container">
+        <h2>Check Number or String</h2>
+
+        <label for="numberInput">Enter a Number:</label>
+        <input type="number" id="numberInput" placeholder="Enter number here...">
+        
+        <button onclick="checkOddOrEven()">Check Odd/Even </button>
+        <button onclick="checkPrime()">Check Prime</button>
+        
+        <hr>
+
+        <label for="stringInput">Enter a String:</label>
+        <input type="text" id="stringInput" placeholder="Enter string here...">
+        
+        <button onclick="checkPalindrome()">Check Palindrome</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
